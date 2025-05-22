@@ -11,7 +11,6 @@ CORS(app)  # Habilita CORS para todas as rotas
 def calculate():
     try:
         
-
         # Receber a imagem
         if 'image' not in request.files:
             return jsonify({'error': 'Nenhuma imagem enviada'}), 400
