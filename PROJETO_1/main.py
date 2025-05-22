@@ -10,10 +10,7 @@ CORS(app)  # Habilita CORS para todas as rotas
 @app.route('/calculate', methods=['POST'])
 def calculate():
     try:
-        # Receber os parâmetros
-        pa = float(request.form['pa'])
-        pb = float(request.form['pb'])
-        t = float(request.form['t'])
+        
 
         # Receber a imagem
         if 'image' not in request.files:
@@ -38,16 +35,16 @@ def calculate():
         height_diff_m = height_diff_pixels * scale_factor
         
         # Calcular a pressão
-        rho = 1000  
+        rho =  13534  
         g = 9.81    
         pressure = rho * g * height_diff_m
-
+        
         # Remover a imagem temporária
         os.remove(image_path)
 
         return jsonify({
             'pressure': pressure,
-            'height_diff_m': height_diff_m,
+            'DifAltura': height_diff_m,
             'Altura_PA': height_left_m,
             'Altura_PB': height_right_m
         })
